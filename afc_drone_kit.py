@@ -1,4 +1,7 @@
+#'dronekit' and 'pymavlink' libraries to interact with a drone through the MAVLink protocol. 
+#'VehicleMode' is used to set the vehicle mode (like "GUIDED", "AUTO", etc.)
 from dronekit import connect, VehicleMode, LocationGlobalRelative
+#This line imports the mavutil module from the pymavlink library. mavutil provides a set of utilities for working with MAVLink messages.
 from pymavlink import mavutil
 import time
 import argparse  
@@ -7,6 +10,7 @@ parser.add_argument('--connect', default='127.0.0.1:14550')
 args = parser.parse_args()
 
 # Connect to the Vehicle
+#This is for prints the connection information, displaying the IP address and port to which the script is attempting to connect.
 print ('Connecting to vehicle on: %s' % args.connect)
 vehicle = connect(args.connect, baud=921600, wait_ready=True)
 #921600 is the baudrate that you have set in the mission plannar or qgc
